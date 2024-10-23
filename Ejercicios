@@ -1,0 +1,92 @@
+######### EJER1 #########
+numeros <- c(5, -3, 0, 2, -7, 4, 0, -2, 8, -1)
+clasificacion <- ifelse(numeros > 0, "Positivo", ifelse(numeros < 0, "Negativo", "Cero"))
+print(clasificacion)
+
+
+######### EJER2 #########
+set.seed(123)
+numeros <- sample(1:100, 100, replace = TRUE)
+pares <- sum(numeros %% 2 == 0)
+impares <- sum(numeros %% 2 != 0)
+
+cat("Semilla utilizada: 123\nNumeros elegidos: ", numeros, "\nPares: ", pares, "\nImpares: ", impares, "\n")
+
+
+######### EJER3 #########
+N <- 10
+suma <- sum(1:N)
+print(suma)
+
+
+######### EJER4 #########
+fibonacci <- numeric(20)
+fibonacci[1:2] <- c(0, 1)
+for (i in 3:20) {
+  fibonacci[i] <- fibonacci[i-1] + fibonacci[i-2]
+}
+print(fibonacci)
+
+
+######### EJER5 #########
+n <- 5
+factorial <- prod(1:n)
+cat("Factorial de", n, ": ", factorial, "\n")
+
+
+######### EJER6 #########
+numero_secreto <- sample(1:100, 1)
+repeat {
+  adivinanza <- as.integer(readline(prompt="Adivina el número (1-100): "))
+  if (adivinanza > numero_secreto) {
+    cat("Es menor. Intenta de nuevo.\n")
+  } else if (adivinanza < numero_secreto) {
+    cat("Es mayor. Intenta de nuevo.\n")
+  } else {
+    cat("¡Felicitaciones! Adivinaste el número.\n")
+    break
+  }
+}
+
+
+######### EJER7 #########
+password_correcta <- "mi_contraseña"
+intentos <- 0
+repeat {
+  password_ingresada <- readline(prompt="Ingresa tu contraseña: ")
+  intentos <- intentos + 1
+  if (password_ingresada == password_correcta) {
+    cat("¡Contraseña correcta! Acceso concedido.\n")
+    break
+  } else if (intentos >= 3) {
+    cat("Demasiados intentos fallidos. Acceso bloqueado.\n")
+    break
+  } else {
+    cat("Contraseña incorrecta. Intenta de nuevo.\n")
+  }
+}
+
+
+######### EJER8 #########
+numero <- as.integer(readline(prompt="Ingresa un número: "))
+suma_digitos <- sum(as.numeric(unlist(strsplit(as.character(numero), ""))))
+cat("La suma de los dígitos es:", suma_digitos, "\n")
+
+
+######### EJER9 #########
+n <- as.integer(readline(prompt="Ingresa la cantidad de líneas: "))
+for (i in 1:n) {
+  cat(strrep("*", i), "\n")
+}
+
+
+######### EJER10 #########
+es_primo <- function(num) {
+  if (num <= 1) return(FALSE)
+  for (i in 2:sqrt(num)) {
+    if (num %% i == 0) return(FALSE)
+  }
+  return(TRUE)
+}
+primos <- Filter(es_primo, 1:100)
+cat(primos, "\n")
